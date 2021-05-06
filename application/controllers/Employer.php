@@ -1,9 +1,15 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+/**
+ * Class Employer
+ */
 class Employer extends CI_Controller
 {
 
+    /**
+     * Employer constructor.
+     */
     public function __construct()
     {
         parent::__construct();
@@ -34,6 +40,9 @@ class Employer extends CI_Controller
         }
     }
 
+    /**
+     * register
+     */
     public function register()
     {
         if (in_array("", $_POST)) {
@@ -81,6 +90,10 @@ class Employer extends CI_Controller
 
     }
 
+    /**
+     * @param $password
+     * @return bool
+     */
     public function pass_verify($password){
         $uppercase = preg_match('/[A-Z]/', $password);
         $lowercase = preg_match('/[a-z]/', $password);
