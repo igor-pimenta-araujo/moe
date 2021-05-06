@@ -20,7 +20,7 @@ class Intern extends CI_Controller
     /**
      * index
      */
-    public function index(): void
+    public function index()
     {
         if ($_SESSION['id'] && $_SESSION['office'] == "intern"){
             $intern = $this->intern_model->findById($_SESSION['id']);
@@ -44,7 +44,7 @@ class Intern extends CI_Controller
     /**
      * @return void
      */
-    public function register(): void
+    public function register()
     {
         if (in_array("", $_POST)) {
             $answer['status'] = 0;
@@ -94,7 +94,7 @@ class Intern extends CI_Controller
      * @param $password
      * @return bool
      */
-    public function pass_verify($password): bool
+    public function pass_verify($password)
     {
         $uppercase = preg_match('/[A-Z]/', $password);
         $lowercase = preg_match('/[a-z]/', $password);
