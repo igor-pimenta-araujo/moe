@@ -1,6 +1,6 @@
 <?php
 
-class Employer_model extends CI_Model
+class Intern_model extends CI_Model
 {
 
     public function __construct()
@@ -13,8 +13,8 @@ class Employer_model extends CI_Model
     {
         $this->db
             ->select("*")
-            ->from("employers")
-            ->where("employer_email", $email);
+            ->from("interns")
+            ->where("intern_email", $email);
 
         $result = $this->db->get();
 
@@ -29,8 +29,8 @@ class Employer_model extends CI_Model
     {
         $this->db
             ->select("*")
-            ->from("employers")
-            ->where("employer_id", $id);
+            ->from("interns")
+            ->where("intern_id", $id);
 
         $result = $this->db->get();
 
@@ -42,12 +42,12 @@ class Employer_model extends CI_Model
     }
 
     public function insert($data) {
-        $this->db->insert("employers", $data);
+        $this->db->insert("interns", $data);
     }
 
     public function update($id, $data){
-        $this->db->where("employer_id", $id);
-        $this->db->update("employers", $data);
+        $this->db->where("intern_id", $id);
+        $this->db->update("interns", $data);
     }
 
 }

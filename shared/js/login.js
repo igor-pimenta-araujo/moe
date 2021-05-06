@@ -1,4 +1,4 @@
-const BASE_URL = "https://www.localhost/webestagio/";
+const BASE_URL = base_url;
 
 $(document).ready(function () {
 
@@ -10,7 +10,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "post",
-            url: BASE_URL + "user/authUser",
+            url: BASE_URL + "web/auth",
             dataType: "json",
             data: {
                 "email": $("#input_email").val(),
@@ -18,8 +18,14 @@ $(document).ready(function () {
             },
             success: function(json) {
                 if (json["status"] == 1) {
-                    alert(json["message"]);
-                    window.location = BASE_URL + "app";
+                    Swal.fire({
+                        title: json['message'],
+                        confirmButtonText: `OK!`
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location = BASE_URL + json['office'];
+                        }
+                    });
                 } else {
                     Swal.fire({
                         icon: 'error',

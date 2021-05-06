@@ -8,7 +8,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="https://cdn3.iconfinder.com/data/icons/happily-colored-snlogo/128/medium.png">
+    <link rel="icon" href="<?= base_url("shared/img/logo.png")?>">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>MOE | Mural de Oportunidades de Estágio</title>
 
@@ -17,7 +17,9 @@
     <!-- My CSS -->
     <link rel="stylesheet" href=<?= base_url("shared/css/style.css")?>>
 
-    <!------ Include the above in your HEAD tag ---------->
+    <script>
+        var base_url = '<?php echo base_url(); ?>';
+    </script>
 
 </head>
 

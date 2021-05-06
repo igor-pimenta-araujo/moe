@@ -70,22 +70,22 @@
             <div style="display: none" class="row" id="div_intern">
                 <div class="row">
                     <div class="input-field col s6">
-                        <input id="input_name" type="text" class="">
-                        <label for="input_name">Nome completo</label>
+                        <input id="input_intern_name" type="text" class="">
+                        <label for="input_intern_name">Nome completo</label>
                     </div>
                     <div class="input-field col s4">
-                        <input id="input_curse" type="text" class="">
-                        <label for="input_curse">Curso</label>
+                        <input id="input_intern_curse" type="text" class="">
+                        <label for="input_intern_curse">Curso</label>
                     </div>
                     <div class="input-field col s2">
-                        <input id="input_year" type="number" class="">
-                        <label for="input_year">Ano de ingresso no curso</label>
+                        <input id="input_intern_year" type="number" class="">
+                        <label for="input_intern_year">Ano de ingresso no curso</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="input_curriculum" type="text" class="">
-                        <label for="input_curriculum">Minicurriculo</label>
+                        <input id="input_intern_curriculum" type="text" class="">
+                        <label for="input_intern_curriculum">Minicurriculo</label>
                     </div>
                 </div>
                 <div class="row">

@@ -1,7 +1,7 @@
 <div style="min-height: calc(100vh - 134px)"  class="had-container">
     <div class="parallax-container logueo">
         <div class="parallax"><img src="https://alistapart.com/d/438/fig-6--background-blend-mode.jpg"></div>
-        <div  id="back" class="row"><br>
+        <div id="back" class="row"><br>
             <div class="col m8 s8 offset-m2 offset-s2 center">
                 <h4 class="truncate bg-card-user">
                     <div class="row login">

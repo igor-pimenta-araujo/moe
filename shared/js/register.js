@@ -1,4 +1,4 @@
-const BASE_URL = "https://www.localhost/webestagio/";
+const BASE_URL = base_url;
 
 $(document).ready(function () {
 
@@ -39,13 +39,12 @@ $(document).ready(function () {
                 if (json["status"] == 1) {
                     Swal.fire({
                         title: json['message'],
-                        showDenyButton: true,
                         confirmButtonText: `OK!`
                     }).then((result) => {
                         if (result.isConfirmed) {
                             window.location = BASE_URL;
                         }
-                    })
+                    });
                 } else {
                     Swal.fire({
                         icon: 'error',
@@ -66,16 +65,27 @@ $(document).ready(function () {
 
         $.ajax({
             type: "post",
-            url: BASE_URL + "user/authUser",
+            url: BASE_URL + "intern/register",
             dataType: "json",
             data: {
                 "email": $("#input_email").val(),
-                "password": $("#input_password").val()
+                "password": $("#input_password").val(),
+                "password_confirm": $("#input_password_confirm").val(),
+                "intern_name": $("#input_intern_name").val(),
+                "intern_curriculum": $("#input_intern_curriculum").val(),
+                "intern_curse": $("#input_intern_curse").val(),
+                "intern_year": $("#input_intern_year").val()
             },
             success: function(json) {
                 if (json["status"] == 1) {
-                    alert(json["message"]);
-                    window.location = BASE_URL + "app";
+                    Swal.fire({
+                        title: json['message'],
+                        confirmButtonText: `OK!`
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location = BASE_URL;
+                        }
+                    });
                 } else {
                     Swal.fire({
                         icon: 'error',
