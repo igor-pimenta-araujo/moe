@@ -19,7 +19,7 @@ class Web extends CI_Controller
      */
     public function index()
     {
-        if (!$_SESSION['id']) {
+        if (empty($_SESSION['id'])) {
 
             $head = array(
                 "scripts" => array(
