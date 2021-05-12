@@ -15,6 +15,7 @@ class Employer extends CI_Controller
         parent::__construct();
         session_start();
         $this->load->model('employer_model');
+        $this->load->model('vacancy_model');
     }
 
     /**
@@ -26,14 +27,15 @@ class Employer extends CI_Controller
             $employer = $this->employer_model->findById($_SESSION['id']);
             $head = array(
                 "scripts" => array(
-                    "login.js"
+                    "login.js",
+                    "employer.js"
                 ),
                 "employer" => $employer
             );
 
             $this->load->view('layout/head', $head);
             $this->load->view('layout/navbarApp');
-            $this->load->view('app/employer');
+            $this->load->view('app/employerMural');
             $this->load->view('layout/footer');
         }else{
             header("Location: " . base_url());
@@ -104,6 +106,31 @@ class Employer extends CI_Controller
             return true; // "senha correta"
         }else{
             return false; // "senha inválida"
+        }
+    }
+
+    public function register_vacancy(){
+        $data = $_POST;
+
+        if (!in_array("", $data)){
+
+            if ($data["remuneration"] < 472){
+                $json["status"] = 0;
+                $json["message"] = "Remuneração está abaixo do minimo permitido pela universidade. R$472,00";
+                echo json_encode($json);
+                return;
+            }
+
+            $data["employer_id"] = $_SESSION['id'];
+            $this->vacancy_model->insert($data);
+
+            $json["status"] = 1;
+            $json["message"] = "Cadastro da vaga de estágio realizado com sucesso!! :)";
+            echo json_encode($json);
+        }else{
+            $json["status"] = 0;
+            $json["message"] = "Preencha todos os campos";
+            echo json_encode($json);
         }
     }
 

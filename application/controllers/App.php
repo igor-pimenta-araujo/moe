@@ -14,13 +14,6 @@ class App extends CI_Controller {
      */
     public function index()
 	{
-
-	    $head = array(
-            "scripts" => array(
-                "login.js"
-            )
-        );
-
-	    var_dump($_SESSION);
+        $this->load->view('email/vaga_estagio');
     }
 }

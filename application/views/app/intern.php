@@ -7,7 +7,8 @@
             <h5 class="header col s12 light">Aqui você terá acesso as suas funcionalidades de Estagiário</h5>
         </div>
         <div class="row center">
-            <a href="" id="download-button" class="btn-large waves-effect waves-light green darken-4">Vamos lá!</a>
+            <a style="margin-right: 5px;" href="<?= base_url("intern/mural")?>" id="download-button" class="btn-large waves-effect waves-light green darken-4">Encontre as empresas que você pode seguir aqui!</a>
+            <a style="margin-left: 5px;" href="<?= base_url("intern/follow")?>" id="download-button" class="btn-large waves-effect waves-light green darken-4">Encontre as empresas que você ja segue aqui!</a>
         </div>
         <br><br>
 

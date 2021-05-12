@@ -19,17 +19,26 @@ class Web extends CI_Controller
      */
     public function index()
     {
+        if (!$_SESSION['id']) {
 
-        $head = array(
-            "scripts" => array(
-                "login.js"
-            )
-        );
+            $head = array(
+                "scripts" => array(
+                    "login.js"
+                )
+            );
 
-        $this->load->view('layout/head', $head);
-        $this->load->view('layout/navbar');
-        $this->load->view('login');
-        $this->load->view('layout/footer');
+            $this->load->view('layout/head', $head);
+            $this->load->view('layout/navbar');
+            $this->load->view('login');
+            $this->load->view('layout/footer');
+
+        }else{
+            if ($_SESSION['office'] == "intern"){
+                header("Location: " . base_url("intern"));
+            }else{
+                header("Location: " . base_url("employer"));
+            }
+        }
     }
 
     public function register()

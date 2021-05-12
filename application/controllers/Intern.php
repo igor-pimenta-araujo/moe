@@ -15,6 +15,7 @@ class Intern extends CI_Controller
         parent::__construct();
         session_start();
         $this->load->model('intern_model');
+        $this->load->model('employer_model');
     }
 
     /**
@@ -27,7 +28,7 @@ class Intern extends CI_Controller
 
             $head = array(
                 "scripts" => array(
-                    "login.js"
+                    "intern.js"
                 ),
                 "intern" => $intern
             );
@@ -35,6 +36,66 @@ class Intern extends CI_Controller
             $this->load->view('layout/head', $head);
             $this->load->view('layout/navbarApp');
             $this->load->view('app/intern');
+            $this->load->view('layout/footer');
+        }else{
+            header("Location: " . base_url());
+        }
+    }
+
+    public function mural(){
+        if ($_SESSION['id'] && $_SESSION['office'] == "intern"){
+            $intern = $this->intern_model->findById($_SESSION['id']);
+
+
+            $followEmployer = $this->intern_model->showFollowEmployers($_SESSION['id']);
+            $list = array();
+            foreach ($followEmployer as $f){
+                array_push($list, $f['id_employer']);
+            }
+
+            $employer = $this->intern_model->showEmployerDontFollow($list);
+
+            $head = array(
+                "scripts" => array(
+                    "intern.js"
+                ),
+                "intern" => $intern,
+                "employer" => $employer
+            );
+
+            $this->load->view('layout/head', $head);
+            $this->load->view('layout/navbarApp');
+            $this->load->view('app/internMural');
+            $this->load->view('layout/footer');
+        }else{
+            header("Location: " . base_url());
+        }
+    }
+
+    public function follow(){
+        if ($_SESSION['id'] && $_SESSION['office'] == "intern"){
+            $intern = $this->intern_model->findById($_SESSION['id']);
+
+
+            $followEmployer = $this->intern_model->showFollowEmployers($_SESSION['id']);
+            $list = array();
+            foreach ($followEmployer as $f){
+                array_push($list, $f['id_employer']);
+            }
+
+            $employer = $this->intern_model->showEmployerDontFollow($list);
+
+            $head = array(
+                "scripts" => array(
+                    "intern.js"
+                ),
+                "intern" => $intern,
+                "employer" => $followEmployer
+            );
+
+            $this->load->view('layout/head', $head);
+            $this->load->view('layout/navbarApp');
+            $this->load->view('app/internFollow');
             $this->load->view('layout/footer');
         }else{
             header("Location: " . base_url());
@@ -106,6 +167,41 @@ class Intern extends CI_Controller
         }else{
             return false; // "senha inválida"
         }
+    }
+
+    public function register_vacancys(){
+
+        if (empty($_POST['list'])){
+            $answer['status'] = 0;
+            $answer['message'] = "Nenhuma empresa selecionada";
+            echo json_encode($answer);
+            return;
+        }
+
+        $list = $_POST['list'];
+
+
+        $data = array();
+        foreach ($list as $l){
+            $dados = array(
+                'id_intern' => $_SESSION['id'],
+                'id_employer' => $l
+            );
+            array_push($data, $dados);
+        }
+
+        $this->intern_model->insert_batch($data);
+
+        $answer['status'] = 1;
+        $answer['message'] = "Empresas seguidas com sucesso!!";
+        echo json_encode($answer);
+    }
+
+    public function unfollow_employer(){
+        $this->intern_model->unfollow($_SESSION['id'], $_POST['employer_id']);
+        $answer['status'] = 1;
+        $answer['message'] = "Você deixou de seguir com sucesso!!";
+        echo json_encode($answer);
     }
 
 }
