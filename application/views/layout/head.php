@@ -10,6 +10,7 @@
     <meta name="author" content="">
     <link rel="icon" href="<?= base_url("shared/img/logo.png")?>">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <title>MOE | Mural de Oportunidades de Estágio</title>
 
     <!-- Bootstrap CSS -->

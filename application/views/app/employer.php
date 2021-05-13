@@ -7,7 +7,7 @@
             <h5 class="header col s12 light">Aqui você terá acesso as suas funcionalidades de Empresa</h5>
         </div>
         <div class="row center">
-            <a href="" id="download-button" class="btn-large waves-effect waves-light green darken-4">Vamos lá!</a>
+            <a href="<?= base_url('employer/mural')?>" id="download-button" class="btn-large waves-effect waves-light green darken-4">Cadastre aqui uma vaga!</a>
         </div>
         <br><br>
 

@@ -60,5 +60,22 @@ class Vacancy_model extends CI_Model
         $this->db->where("intern_id", $id);
         $this->db->update("interns", $data);
     }
+    
+    //SELECT * FROM interns LEFT JOIN table_employer_intern ON interns.intern_id = table_employer_intern.id_intern WHERE table_employer_intern.id_employer = 3
+    public function findFollowers($id_employer)
+    {
+        $this->db
+            ->select('intern_name, intern_email')
+            ->from('interns')
+            ->join('table_employer_intern', 'interns.intern_id = table_employer_intern.id_intern', 'LEFT')
+            ->where('table_employer_intern.id_employer', $id_employer);
+        $result = $this->db->get()->result_array();
+
+        if ($result) {
+            return $result;
+        } else {
+            return NULL;
+        }
+    }
 
 }

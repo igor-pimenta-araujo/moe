@@ -58,7 +58,7 @@
                         </div>
                     </div>
                     <div style="text-align: right" class="card-action blue-grey lighten-4">
-                        <button class="btn waves-effect waves-purple" type="submit" name="action">Cadastrar vaga
+                        <button class="btn waves-effect waves-purple" type="submit" id="btn_vacancy" name="action">Cadastrar vaga
                             <i class="material-icons right">send</i>
                         </button>
                         </form>
